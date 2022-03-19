@@ -57,26 +57,15 @@ namespace WSCL
         device->GetFrontBufferData(0, surface);
         // copy it into our buffers
         D3DLOCKED_RECT rc;
-    //    surface->LockRect(&rc, nullptr, 0);
-
+        //  surface->LockRect(&rc, nullptr, 0);
         surface->LockRect(&rc,nullptr,
                            D3DLOCK_NO_DIRTY_UPDATE|
                            D3DLOCK_NOSYSLOCK|D3DLOCK_READONLY);
 
-
-    //    CopyMemory(d3dImage, rc.pBits, rc.Pitch * mode.Height);
+        // CopyMemory(d3dImage, rc.pBits, rc.Pitch * mode.Height);
         surface->UnlockRect();
 
-    //     convert to opencv
-        img = cv::Mat(mode.Height, mode.Width, CV_8UC4, rc.pBits);
-        return;
-
-        cv::Mat rsz;
-        cv::resize(img, rsz, cv::Size(1280, 720), 0, 0, cv::INTER_LANCZOS4);
-
-        cv::imshow("dbg", rsz);
-        cv::waitKey(0);
-        //    cv::imwrite("dbg.jpg", img);
-    //    std::cout << mode.Width << ":" << mode.Height << ", " << rc.Pitch << std::endl;
+        // Convert to opencv
+        img = cv::Mat(static_cast<int>(mode.Height), static_cast<int>(mode.Width), CV_8UC4, rc.pBits);
     }
 }
