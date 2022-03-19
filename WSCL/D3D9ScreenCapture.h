@@ -3,7 +3,7 @@
 #include <d3d9.h>                 // DirectX 9 header
 #pragma comment(lib, "d3d9.lib")  // link to DirectX 9 library
 
-#include "ScreenCapture.h"
+#include "IScreenCapture.h"
 #define CAPTURE_DERECTX 0x0
 
 

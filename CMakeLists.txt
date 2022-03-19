@@ -5,12 +5,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(HEADERS
-    WSCL/core.h
     WSCL/ScreenCapture.h
+    WSCL/IScreenCapture.h
     WSCL/D3D9ScreenCapture.h)
 
 set(SOURCES
-    WSCL/ScreenCapture.cpp
+    WSCL/IScreenCapture.cpp
     WSCL/D3D9ScreenCapture.cpp)
 
 source_group("Source Files" FILES ${SOURCES})

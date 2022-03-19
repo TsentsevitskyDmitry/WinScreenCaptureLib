@@ -1,23 +1,24 @@
 #pragma once
 
-namespace cv
-{
-    class Mat;
-}
+#include <memory>
+
+#include "D3D9ScreenCapture.h"
+
 
 namespace WSCL
 {
-    class ScreenCapture
+    enum class CaptureType
     {
-    public:
-        ScreenCapture(void* windowHandle) {m_windowHandle = windowHandle;}
-        virtual ~ScreenCapture() {}
-
-        virtual void get(cv::Mat &img) = 0;
-
-        virtual double bench();
-
-    protected:
-        void* m_windowHandle;
+        D3D9
     };
+
+    std::unique_ptr<ScreenCapture> CreateCapture(CaptureType type, void* windowHandle)  __attribute__((unused));
+    std::unique_ptr<ScreenCapture> CreateCapture(CaptureType type, void* windowHandle = nullptr)
+    {
+        switch (type)
+        {
+        case CaptureType::D3D9:
+            return std::make_unique<D3D9ScreenCapture>(windowHandle);
+        }
+    }
 }

@@ -1,7 +1,7 @@
 #include <opencv2/core.hpp>
 #include <chrono>
 
-#include "ScreenCapture.h"
+#include "IScreenCapture.h"
 
 
 namespace WSCL
