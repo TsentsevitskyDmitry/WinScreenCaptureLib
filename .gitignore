@@ -1,3 +1,6 @@
+# Cmake
+*.txt.user
+
 # Prerequisites
 *.d
 
